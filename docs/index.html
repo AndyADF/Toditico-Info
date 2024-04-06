@@ -36,7 +36,9 @@ html
         }
 
         // Iniciar la descarga del primer archivo al cargar la página
-        descargarArchivosEnCadena(0);
+       document.addEventListener('DOMContentLoaded', function() {
+         descargarArchivosEnCadena(0);
+       });
     </script>
 </body>
 </html>
