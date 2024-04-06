@@ -1,0 +1,42 @@
+html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Descargas Toditico</title>
+</head>
+<body>
+    <h1>Descarga de Archivos Toditico</h1>
+
+    <script>
+        // Lista de URLs de los archivos a descargar
+        const urls = [
+        'https://drive.usercontent.google.com/download?id=1O_w5gcFNqt-fFgdCh8Bc-1u9pHRkMXck&export=download', 
+        'https://drive.usercontent.google.com/download?id=1Nw5JLr4HS9QK4xs9rFz_4TgaOyuB43AR&export=download',
+        'https://drive.usercontent.google.com/download?id=1N_EbKsd-6TOxYe2wqY7RzN96TmvYoxCD&export=download'
+        ];
+
+        // Función para descargar archivos en cadena
+        function descargarArchivosEnCadena(index) {
+            if (index < urls.length) {
+                // Crear un enlace de descarga y simular clic para iniciar la descarga
+                const link = document.createElement('a');
+                link.href = urls[index];
+                link.download = urls[index].split('/').pop();
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Descargar el próximo archivo luego de un pequeño tiempo (1000 ms = 1 segundo)
+                setTimeout(() => {
+                    descargarArchivosEnCadena(index + 1);
+                }, 1000);
+            }
+        }
+
+        // Iniciar la descarga del primer archivo al cargar la página
+        descargarArchivosEnCadena(0);
+    </script>
+</body>
+</html>
